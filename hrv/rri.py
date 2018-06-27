@@ -27,6 +27,17 @@ class RRi:
     def time(self):
         return self.__time
 
+    def describe(self):
+        return RRiDescription(
+                min=self.min(),
+                max=self.max(),
+                amplitude=self.amplitude(),
+                mean=self.mean(),
+                median=self.median(),
+                var=self.var(),
+                std=self.std()
+        )
+
     def mean(self):
         return np.mean(self.rri)
 
@@ -89,6 +100,11 @@ class RRi:
 
     def __le__(self, val):
         return self.rri <= val
+
+
+class RRiDescription(dict):
+    def __repr__(self):
+        return 'description'
 
 
 def _validate_rri(rri):

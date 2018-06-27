@@ -227,3 +227,14 @@ class TestRRiClassMethods:
                 rri.rms(),
                 np.sqrt(np.mean(np.square(FAKE_RRI))),
         )
+
+    def test_rri_describe(self):
+        rri = RRi(FAKE_RRI)
+        description = rri.describe()
+
+        assert isinstance(description, dict)
+        assert description.__repr__() == 'description'
+        keys = ['min', 'max', 'amplitude', 'mean', 'median', 'var', 'std']
+
+        for key in description.keys():
+            assert key in keys
