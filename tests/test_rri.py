@@ -238,3 +238,10 @@ class TestRRiClassMethods:
 
         for key in description.keys():
             assert key in keys
+
+    def test_rri_to_hear_rate(self):
+        rri = RRi(FAKE_RRI)
+        heart_rate = rri.to_hr()
+        expected = np.array([75., 74.07407407, 73.6196319, 80.])
+
+        np.testing.assert_array_almost_equal(heart_rate, expected)

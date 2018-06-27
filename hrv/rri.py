@@ -38,6 +38,9 @@ class RRi:
                 std=self.std()
         )
 
+    def to_hr(self):
+        return 60 / (self.rri / 1000.0)
+
     def mean(self):
         return np.mean(self.rri)
 
